@@ -1,2 +1,247 @@
 # Ukbusinesspro.github.io
 UK Business Pro (Ingiltere’de ki yonetim ofisiniz)
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>We keep it simple — One page</title>
+
+  <!-- Caveat handwriting font -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Basic SEO -->
+  <meta name="description" content="Simple one-page site — what we do, what we don't do, how we work and who we work for. Clean notepad/grid design with Caveat handwriting font." />
+
+  <style>
+    /* ========= Configurable variables =========
+       You can tweak these to change the look.
+       gridSize: spacing of grid lines (px)
+       sepia: background paper color
+       lineColour: grid line colour (keep subtle)
+       textColour: handwriting ink colour
+    */
+    :root{
+      --gridSize: 40px;
+      --sepia: #f4ecd0;          /* paper color */
+      --lineColour: rgba(0,0,0,0.08); /* grid line */
+      --textColour: #222;        /* handwriting ink */
+      --accent: #111;            /* headings stronger */
+      --maxWidth: 760px;
+      --pagePadding: 34px;
+    }
+
+    /* Reset / base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Caveat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background-color: var(--sepia);
+
+      /* create grid lines using CSS gradients (both axes) */
+      background-image:
+        linear-gradient(to right, var(--lineColour) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--lineColour) 1px, transparent 1px);
+      background-size: var(--gridSize) var(--gridSize);
+
+      /* subtle paper texture fallback: (optional) comment out if not wanted */
+      /* background-image: url('paper-texture.jpg'), linear-gradient(...); */
+      color: var(--textColour);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding: calc(var(--pagePadding) * 1.2);
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      line-height:1.15;
+    }
+
+    /* Paper container that looks like a notepad sheet */
+    .sheet{
+      width:100%;
+      max-width: var(--maxWidth);
+      background: transparent; /* keep background grid visible */
+      padding: 28px 32px;
+      border-radius:10px;
+      /* subtle inner shadow so content feels lifted */
+      box-shadow: 0 6px 18px rgba(20,20,20,0.06), inset 0 1px 0 rgba(255,255,255,0.18);
+    }
+
+    /* Handwritten sizes for headings & text */
+    h1{
+      font-size: clamp(34px, 6.2vw, 56px);
+      margin: 0 0 6px 0;
+      color: var(--accent);
+      font-weight:700;
+      letter-spacing: 0.6px;
+    }
+    .subtitle{
+      font-size: clamp(16px, 2.2vw, 22px);
+      margin: 0 0 22px 0;
+      opacity:0.95;
+      font-weight:400;
+    }
+
+    section{
+      margin-bottom: 20px;
+      padding: 8px 0;
+    }
+
+    h2{
+      font-size: clamp(22px, 3.1vw, 30px);
+      margin: 8px 0 12px 0;
+      color: var(--accent);
+      font-weight:700;
+    }
+
+    /* list styles that look hand-drawn */
+    ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    .tick-list li{
+      font-size: clamp(16px, 2.4vw, 20px);
+      margin: 10px 0;
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+    }
+    .tick {
+      width:28px;
+      flex: 0 0 28px;
+      font-size:18px;
+      line-height:1;
+      transform: translateY(2px);
+      color:var(--textColour);
+    }
+    .cross { color:var(--textColour) }
+
+    /* How we do it — flow line */
+    .flow{
+      font-size: clamp(15px, 2.1vw, 18px);
+      letter-spacing: 0.8px;
+      margin-top:6px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .flow .step{
+      padding:6px 10px;
+      border-radius:8px;
+      background: rgba(0,0,0,0.03);
+      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.03);
+    }
+
+    /* Who we work for — two-column-ish on wide screens */
+    .who{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:6px;
+    }
+    .who .item{
+      flex: 1 1 220px;
+      font-size: clamp(15px, 2.1vw, 18px);
+      padding:6px 0;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .who .bullet{
+      width:18px;
+      transform: translateY(2px);
+    }
+
+    /* CTA / footer */
+    .cta{
+      margin-top:14px;
+      font-size: clamp(20px, 3.6vw, 28px);
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .cta a{
+      color:var(--textColour);
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width:520px){
+      body{ padding:22px; }
+      .sheet{ padding:18px 18px; }
+      .who{ gap:12px; }
+    }
+
+    /* Accessibility: high contrast mode fallback */
+    @media (prefers-contrast: more){
+      :root{ --lineColour: rgba(0,0,0,0.12); --textColour:#000 }
+    }
+
+  </style>
+</head>
+
+<body>
+  <main class="sheet" role="main" aria-labelledby="main-title">
+    <header>
+      <h1 id="main-title">We keep it simple.</h1>
+      <div class="subtitle">Here's what you need to know.</div>
+    </header>
+
+    <!-- WHAT WE DO -->
+    <section aria-labelledby="what-we-do">
+      <h2 id="what-we-do">What we do</h2>
+      <ul class="tick-list" aria-hidden="false">
+        <li><span class="tick">✔</span> <span>Help businesses structure smarter deals</span></li>
+        <li><span class="tick">✔</span> <span>Provide clarity in accounting &amp; tax</span></li>
+        <li><span class="tick">✔</span> <span>Guide expats and nomads in navigating finance</span></li>
+      </ul>
+    </section>
+
+    <!-- WHAT WE DON'T DO -->
+    <section aria-labelledby="what-we-dont">
+      <h2 id="what-we-dont">What we don't do</h2>
+      <ul class="tick-list">
+        <li><span class="tick cross">✖</span> <span>Overcomplicate things</span></li>
+        <li><span class="tick cross">✖</span> <span>Hide behind jargon</span></li>
+        <li><span class="tick cross">✖</span> <span>Sell what you don't need</span></li>
+      </ul>
+    </section>
+
+    <!-- HOW WE DO IT -->
+    <section aria-labelledby="how-we-do-it">
+      <h2 id="how-we-do-it">How we do it</h2>
+      <div class="flow" role="list">
+        <div class="step" role="listitem">Listen</div>
+        <div class="step" role="listitem">→</div>
+        <div class="step" role="listitem">Understand</div>
+        <div class="step" role="listitem">→</div>
+        <div class="step" role="listitem">Solve</div>
+        <div class="step" role="listitem">→</div>
+        <div class="step" role="listitem">Deliver</div>
+      </div>
+    </section>
+
+    <!-- WHO WE WORK FOR -->
+    <section aria-labelledby="who-we-work-for">
+      <h2 id="who-we-work-for">Who we work for</h2>
+      <div class="who">
+        <div class="item"><span class="bullet">✎</span><span>Entrepreneurs</span></div>
+        <div class="item"><span class="bullet">/</span><span>Expats &amp; nomads</span></div>
+        <div class="item"><span class="bullet">✎</span><span>Growing small businesses</span></div>
+      </div>
+    </section>
+
+    <!-- CTA / CONTACT -->
+    <footer>
+      <div class="cta" aria-label="Contact">
+        <div>Let's talk.</div>
+        <a href="mailto:hello@example.com" id="contact-email">hello@example.com</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
